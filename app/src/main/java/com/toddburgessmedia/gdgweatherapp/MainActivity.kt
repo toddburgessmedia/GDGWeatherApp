@@ -11,21 +11,23 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import kotlin.coroutines.CoroutineContext
 
-class MainActivity : AppCompatActivity(), CoroutineScope {
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.IO
+class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
+
+//    override val coroutineContext: CoroutineContext
+//        get() = Dispatchers.IO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.main_framelayout,WeatherDetailFragment.newInstance())
-        transaction.commit()
-
         val weatherService = WeatherModel()
-        launch  {
-            weatherService.getWeatherForCity("Toronto").collect { weather -> Log.d("GDGWeather",weather.name)}
+
+        val job = launch {
+            weatherService.getWeatherForCity("Toronto").collect { weather ->
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.main_framelayout,WeatherDetailFragment.newInstance(weather))
+                transaction.commit()
+            }
         }
     }
 }

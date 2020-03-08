@@ -40,6 +40,7 @@
             android:layout_height="175sp"
             android:src="@drawable/ic_cloud_black_24dp"
             android:adjustViewBounds="true"
+            android:id="@+id/weatherdetail_icon"
             />
 
         <LinearLayout
@@ -98,6 +99,23 @@
                 android:gravity="center_horizontal"
                 />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="High"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center_horizontal"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="-17 C"
+                android:textSize="14sp"
+                android:id="@+id/weatherdetail_high"
+                android:gravity="center_horizontal"
+                />
+
 
         </LinearLayout>
     </LinearLayout>
@@ -133,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pressure"
-            android:paddingLeft="100sp"
+            android:paddingLeft="80sp"
             android:textColor="@color/colorPrimaryDark"
             />
 
@@ -166,7 +184,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sunset"
-            android:paddingLeft="100sp"
+            android:paddingLeft="80sp"
             android:textColor="@color/colorPrimaryDark"
             />
 

@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface WeatherService  {
 
-    @GET("http://api.openweathermap.org/data/2.5/weather")
+    @GET("http://api.openweathermap.org/data/2.5/weather?units=metric")
     suspend fun getWeatherByCity(@Query("q") city : String, @Query("appid") appid : String) : DayWeather
 }
