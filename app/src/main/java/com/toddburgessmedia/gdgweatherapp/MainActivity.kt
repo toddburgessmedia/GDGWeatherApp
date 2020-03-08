@@ -13,9 +13,6 @@ import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
-//    override val coroutineContext: CoroutineContext
-//        get() = Dispatchers.IO
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
