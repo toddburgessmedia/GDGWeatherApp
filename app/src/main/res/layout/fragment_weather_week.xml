@@ -13,4 +13,12 @@
         android:id="@+id/weatherweek_city"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/weatherweek_recycle"
+        android:scrollbars="vertical"
+        />
+
+
 </LinearLayout>
