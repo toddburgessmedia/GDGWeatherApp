@@ -3,6 +3,7 @@ package com.toddburgessmedia.gdgweatherapp.model
 import com.toddburgessmedia.gdgweatherapp.BuildConfig
 import com.toddburgessmedia.gdgweatherapp.data.DayWeather
 import com.toddburgessmedia.gdgweatherapp.data.Weather
+import com.toddburgessmedia.gdgweatherapp.data.week.WeekWeather
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -28,6 +29,12 @@ class WeatherModel {
 
         val weather = weatherService.getWeatherByCity(city, BuildConfig.API_KEY)
         emit(weather)
+    }
+
+    fun getWeatherForCityForWeek(city : String) : Flow<WeekWeather> = flow {
+
+        val weatherWeek  = weatherService.getWeatherByCityForWeek(city, BuildConfig.API_KEY)
+        emit(weatherWeek)
     }
 
 }

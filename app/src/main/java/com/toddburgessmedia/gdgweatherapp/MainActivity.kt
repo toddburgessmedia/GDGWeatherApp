@@ -26,5 +26,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
                 transaction.commit()
             }
         }
+
     }
 }
