@@ -6,6 +6,7 @@ import android.util.Log
 import com.toddburgessmedia.gdgweatherapp.model.WeatherModel
 import com.toddburgessmedia.gdgweatherapp.model.WeatherService
 import com.toddburgessmedia.gdgweatherapp.view.WeatherDetailFragment
+import com.toddburgessmedia.gdgweatherapp.view.WeatherWeekFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
@@ -19,10 +20,15 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
         val weatherService = WeatherModel()
 
+//        val transaction = supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.main_framelayout,WeatherWeekFragment.newInstanceEmpty())
+//                transaction.commit()
+
         val job = launch {
-            weatherService.getWeatherForCity("Toronto").collect { weather ->
+            weatherService.getWeatherForCityForWeek("Toronto").collect { weather ->
+                Log.d("GDGWeather", weather.city.name)
                 val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.main_framelayout,WeatherDetailFragment.newInstance(weather))
+                transaction.replace(R.id.main_framelayout,WeatherWeekFragment.newInstance(weather))
                 transaction.commit()
             }
         }
