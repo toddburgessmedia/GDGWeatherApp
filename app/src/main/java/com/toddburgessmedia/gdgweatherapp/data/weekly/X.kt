@@ -1,5 +1,9 @@
 package com.toddburgessmedia.gdgweatherapp.data.weekly
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class X(
     val clouds: Int,
     val deg: Int,
@@ -10,4 +14,4 @@ data class X(
     val speed: Double,
     val temp: Temp,
     val weather: List<Weather>
-)
+) : Parcelable
